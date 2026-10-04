@@ -32,21 +32,40 @@ module.exports = async (req, res) => {
       return res.status(200).json({ ok: true }); // silently accept, do nothing
     }
 
+    const required = ['fullName', 'section', 'guardianName', 'phone', 'email'];
+    for (const field of required) {
+      if (!app[field] || !String(app[field]).trim()) {
+        return res.status(400).json({ ok: false, error: 'Missing field: ' + field });
+      }
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD
+      }
+    });
+
+    const lines = [
+      "New admission application - Maknazul 'Irfan Academy",
+      '',
+      'Reference: ' + (app.id || '-'),
       'Section applied for: ' + app.section,
       '',
       'Applicant name: ' + app.fullName,
-      'Date of birth: ' + (app.dob || '—'),
-      'Gender: ' + (app.gender || '—'),
-      'Home address: ' + (app.address || '—'),
+      'Date of birth: ' + (app.dob || '-'),
+      'Gender: ' + (app.gender || '-'),
+      'Home address: ' + (app.address || '-'),
       '',
       'Guardian name: ' + app.guardianName,
-      'Relationship: ' + (app.relationship || '—'),
+      'Relationship: ' + (app.relationship || '-'),
       'Guardian phone: ' + app.phone,
       'Guardian email: ' + app.email,
       '',
-      'Previous school: ' + (app.prevSchool || '—'),
-      'Last class completed: ' + (app.prevClass || '—'),
-      'Additional notes: ' + (app.notes || '—'),
+      'Previous school: ' + (app.prevSchool || '-'),
+      'Last class completed: ' + (app.prevClass || '-'),
+      'Additional notes: ' + (app.notes || '-'),
       '',
       'Submitted: ' + new Date().toLocaleString()
     ].join('\n');
@@ -55,7 +74,7 @@ module.exports = async (req, res) => {
       from: process.env.GMAIL_USER,
       to: process.env.TO_EMAIL || process.env.GMAIL_USER,
       replyTo: app.email,
-      subject: 'Admission application — ' + app.fullName + ' (' + (app.id || 'no ref') + ')',
+      subject: 'Admission application - ' + app.fullName + ' (' + (app.id || 'no ref') + ')',
       text: lines
     };
 
