@@ -89,6 +89,37 @@ module.exports = async (req, res) => {
 
     await transporter.sendMail(mailOptions);
 
+    // Also log this application into the Google Sheet, if configured.
+    // This never blocks or fails the response - the email already sent,
+    // which is the part that matters most. If the sheet logging fails,
+    // we just note it in the function logs.
+    if (process.env.SHEETS_WEBHOOK_URL) {
+      try {
+        await fetch(process.env.SHEETS_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            secret: process.env.SHEETS_SECRET || '',
+            id: app.id,
+            section: app.section,
+            fullName: app.fullName,
+            dob: app.dob,
+            gender: app.gender,
+            address: app.address,
+            guardianName: app.guardianName,
+            relationship: app.relationship,
+            phone: app.phone,
+            email: app.email,
+            prevSchool: app.prevSchool,
+            prevClass: app.prevClass,
+            notes: app.notes
+          })
+        });
+      } catch (sheetErr) {
+        console.error('Sheet logging failed:', sheetErr);
+      }
+    }
+
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error(err);
