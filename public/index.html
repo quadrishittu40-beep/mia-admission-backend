@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.19.3/xlsx.full.min.js"></script>
 <style>
   :root {
     --green-950: #0a2a20; --green-900: #0e3a2c; --green-800: #144d3b; --green-700: #1b6049;
@@ -202,4 +201,791 @@
 
 <div id="viewApply">
 <div class="hero">
-  <img class="crest" src="data:image/jpeg;base64,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
+  <h1>Begin your child's admission</h1>
+  <p class="tagline">Apply for a place in the Ibtidaiyyah or I'dadiyyah section for the 2026/2027 session. Fill in the form below — your application is sent straight to our admissions team.</p>
+  <div class="motto">Knowledge · Faith · Excellence</div>
+
+  <div class="illo-wrap">
+    <svg viewBox="0 0 620 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of Muslim students studying together in front of the academy">
+      <path d="M0 190 Q310 170 620 190 L620 220 L0 220 Z" fill="var(--accent)" opacity="0.06"/>
+
+      <!-- Mosque -->
+      <g opacity="0.95">
+        <!-- left minaret -->
+        <rect x="200" y="78" width="9" height="92" fill="var(--accent)"/>
+        <rect x="197" y="70" width="15" height="10" rx="2" fill="var(--accent)"/>
+        <circle cx="204.5" cy="62" r="7" fill="var(--accent)"/>
+        <path d="M204.5 48 q5 4 0 10 q-5 -6 0 -10 Z" fill="var(--accent-2)"/>
+        <!-- right minaret -->
+        <rect x="411" y="78" width="9" height="92" fill="var(--accent)"/>
+        <rect x="408" y="70" width="15" height="10" rx="2" fill="var(--accent)"/>
+        <circle cx="415.5" cy="62" r="7" fill="var(--accent)"/>
+        <path d="M415.5 48 q5 4 0 10 q-5 -6 0 -10 Z" fill="var(--accent-2)"/>
+
+        <!-- main building -->
+        <rect x="230" y="90" width="160" height="80" rx="4" fill="var(--accent)"/>
+        <path d="M230 90 Q310 40 390 90 Z" fill="var(--accent)"/>
+        <circle cx="310" cy="70" r="13" fill="var(--accent)"/>
+        <rect x="303" y="40" width="6" height="26" fill="var(--accent)"/>
+        <path d="M306 36 q6 5 0 12 q-6 -7 0 -12 Z" fill="var(--accent-2)"/>
+        <rect x="233" y="94" width="154" height="4" fill="var(--accent-2)" opacity="0.7"/>
+
+        <!-- arched windows either side of the door -->
+        <path d="M253 150 L253 128 Q253 116 265 116 Q277 116 277 128 L277 150 Z" fill="var(--bg)"/>
+        <path d="M253 118 L255 118 M253 123 L257 123 M253 128 L259 128 M261 116 L261 150 M269 116 L269 150 M273 118 L271 118" stroke="var(--accent)" stroke-width="1" opacity="0.5"/>
+        <path d="M343 150 L343 128 Q343 116 355 116 Q367 116 367 128 L367 150 Z" fill="var(--bg)"/>
+        <path d="M349 116 L349 150 M357 116 L357 150" stroke="var(--accent)" stroke-width="1" opacity="0.5"/>
+
+        <!-- arched doorway -->
+        <path d="M290 170 L290 142 Q290 126 310 126 Q330 126 330 142 L330 170 Z" fill="var(--accent-2)"/>
+        <path d="M290 170 L290 146 Q290 133 310 133 Q330 133 330 146 L330 170 Z" fill="none" stroke="var(--bg)" stroke-width="1.5" opacity="0.6"/>
+      </g>
+
+      <!-- Students -->
+      <g>
+        <!-- far-left: girl, hijab -->
+        <path d="M91 140 Q91 122 106 122 Q121 122 121 140 Q128 146 128 160 L128 190 L84 190 L84 160 Q84 146 91 140 Z" fill="var(--accent-2)"/>
+        <ellipse cx="106" cy="138" rx="7" ry="8" fill="var(--surface)"/>
+        <circle cx="103" cy="137" r="1.3" fill="var(--accent)"/>
+        <circle cx="109" cy="137" r="1.3" fill="var(--accent)"/>
+        <path d="M102 141 Q106 144 110 141" stroke="var(--accent)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M96 190 Q96 160 106 158 Q116 160 116 190 Z" fill="var(--accent-2)"/>
+        <rect x="90" y="172" width="32" height="18" rx="2" fill="var(--surface)"/>
+        <line x1="106" y1="172" x2="106" y2="190" stroke="var(--accent-2)" stroke-width="1" opacity="0.5"/>
+
+        <!-- inner-left: boy, kufi cap -->
+        <circle cx="175" cy="148" r="12" fill="var(--accent)"/>
+        <ellipse cx="175" cy="141" rx="10" ry="6" fill="var(--surface)"/>
+        <circle cx="171.5" cy="149" r="1.1" fill="var(--bg)"/>
+        <circle cx="178.5" cy="149" r="1.1" fill="var(--bg)"/>
+        <path d="M171 153 Q175 155.5 179 153" stroke="var(--bg)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M154 190 Q154 160 175 160 Q196 160 196 190 Z" fill="var(--accent)"/>
+        <rect x="163" y="176" width="24" height="14" rx="2" fill="var(--surface)"/>
+        <line x1="175" y1="176" x2="175" y2="190" stroke="var(--accent)" stroke-width="1" opacity="0.5"/>
+
+        <!-- inner-right: boy, kufi cap -->
+        <circle cx="470" cy="146" r="13" fill="var(--accent)"/>
+        <ellipse cx="470" cy="138.5" rx="11" ry="6.5" fill="var(--surface)"/>
+        <circle cx="466" cy="147" r="1.2" fill="var(--bg)"/>
+        <circle cx="474" cy="147" r="1.2" fill="var(--bg)"/>
+        <path d="M465.5 151.5 Q470 154 474.5 151.5" stroke="var(--bg)" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M447 190 Q447 158 470 158 Q493 158 493 190 Z" fill="var(--accent)"/>
+        <rect x="456" y="175" width="28" height="15" rx="2" fill="var(--surface)"/>
+        <line x1="470" y1="175" x2="470" y2="190" stroke="var(--accent)" stroke-width="1" opacity="0.5"/>
+
+        <!-- far-right: girl, hijab -->
+        <path d="M509 138 Q509 120 525 120 Q541 120 541 138 Q549 144 549 159 L549 190 L501 190 L501 159 Q501 144 509 138 Z" fill="var(--accent-2)"/>
+        <ellipse cx="525" cy="136" rx="7.5" ry="8.5" fill="var(--surface)"/>
+        <circle cx="522" cy="135" r="1.3" fill="var(--accent)"/>
+        <circle cx="528.5" cy="135" r="1.3" fill="var(--accent)"/>
+        <path d="M521 139.5 Q525 142.5 529 139.5" stroke="var(--accent)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M501 190 Q501 158 525 156 Q549 158 549 190 Z" fill="var(--accent-2)"/>
+        <rect x="509" y="171" width="32" height="18" rx="2" fill="var(--surface)"/>
+        <line x1="525" y1="171" x2="525" y2="190" stroke="var(--accent-2)" stroke-width="1" opacity="0.5"/>
+      </g>
+
+      <g fill="var(--accent-2)" opacity="0.8">
+        <path d="M60 85 l3 7 7 1 -5 5 1 7 -6 -3 -6 3 1 -7 -5 -5 7 -1 z"/>
+        <path d="M575 95 l2.5 6 6 .8 -4.3 4.2 1 6 -5.2 -2.7 -5.2 2.7 1 -6 -4.3 -4.2 6 -.8 z"/>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<div class="sections-intro">
+  <div class="sec-card">
+    <svg class="sec-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="20" cy="14" r="6" fill="var(--accent-2)"/>
+      <path d="M8 34 Q8 22 20 22 Q32 22 32 34 Z" fill="var(--accent-2)"/>
+    </svg>
+    <div class="sec-name">Ibtidaiyyah</div>
+    <div class="sec-age">Primary level</div>
+    <p>Foundational Qur'anic recitation, Arabic language and core Islamic studies alongside basic literacy and numeracy, for younger pupils beginning their education.</p>
+  </div>
+  <div class="sec-card">
+    <svg class="sec-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="14" cy="13" r="5.5" fill="var(--accent)"/>
+      <path d="M4 34 Q4 23 14 23 Q24 23 24 34 Z" fill="var(--accent)"/>
+      <circle cx="27" cy="15" r="5" fill="var(--accent-2)"/>
+      <path d="M18.5 34 Q18.5 24.5 27 24.5 Q35.5 24.5 35.5 34 Z" fill="var(--accent-2)"/>
+    </svg>
+    <div class="sec-name">I'dadiyyah</div>
+    <div class="sec-age">Preparatory level</div>
+    <p>Continuing studies for pupils who have completed Ibtidaiyyah — deeper Qur'anic, Arabic and Fiqh instruction alongside broader general education, preparing them for the next stage.</p>
+  </div>
+</div>
+
+<div class="panel" id="formPanel">
+  <div class="panel-header">
+    <h2>Application form</h2>
+    <p>Fields marked <span class="required-mark">*</span> are required.</p>
+  </div>
+  <form id="appForm">
+    <fieldset>
+      <legend>Choose a section *</legend>
+      <div class="section-picker">
+        <label class="section-option">
+          <input type="radio" name="section" value="Ibtidaiyyah" required>
+          <div class="so-name">Ibtidaiyyah</div>
+          <div class="so-desc">Primary level</div>
+        </label>
+        <label class="section-option">
+          <input type="radio" name="section" value="I'dadiyyah" required>
+          <div class="so-name">I'dadiyyah</div>
+          <div class="so-desc">Preparatory level</div>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Applicant details</legend>
+      <div class="field">
+        <label for="fullName">Full name *</label>
+        <input type="text" id="fullName" required autocomplete="off">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="dob">Date of birth *</label>
+          <input type="date" id="dob" required>
+        </div>
+        <div class="field">
+          <label for="gender">Gender *</label>
+          <select id="gender" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="address">Home address *</label>
+        <input type="text" id="address" required>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Parent / guardian details</legend>
+      <div class="field-row">
+        <div class="field">
+          <label for="guardianName">Guardian name *</label>
+          <input type="text" id="guardianName" required>
+        </div>
+        <div class="field">
+          <label for="relationship">Relationship to applicant *</label>
+          <input type="text" id="relationship" placeholder="e.g. Father, Mother, Uncle" required>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="phone">Phone number *</label>
+          <input type="tel" id="phone" required>
+        </div>
+        <div class="field">
+          <label for="email">Your email address *</label>
+          <input type="email" id="email" required>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Academic background</legend>
+      <div class="field-row">
+        <div class="field">
+          <label for="prevSchool">Previous school (if any)</label>
+          <input type="text" id="prevSchool">
+        </div>
+        <div class="field">
+          <label for="prevClass">Last class completed</label>
+          <input type="text" id="prevClass">
+        </div>
+      </div>
+      <div class="field">
+        <label for="notes">Anything else we should know</label>
+        <textarea id="notes" placeholder="Medical notes, special needs, questions for the admissions team..."></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Passport photograph *</legend>
+      <label class="file-field" id="photoField" for="photoInput">
+        <input type="file" id="photoInput" accept="image/png,image/jpeg,image/webp" required>
+        <div class="ff-icon" id="photoIcon">📷</div>
+        <div class="ff-label">Tap to upload a passport photograph</div>
+        <div class="ff-hint">PNG or JPEG, under 3 MB</div>
+        <div class="ff-status" id="photoStatus"></div>
+      </label>
+    </fieldset>
+
+    <div id="formError" class="form-error" hidden></div>
+    <div class="submit-row">
+      <button type="submit" class="btn-primary" id="submitBtn">Submit application</button>
+      <span class="form-msg" id="formMsg"></span>
+    </div>
+  </form>
+</div>
+
+<div class="confirm" id="confirmPanel" hidden>
+  <div class="check">✓</div>
+  <h2 id="confirmTitle">Almost done</h2>
+  <p id="confirmMsg">Your application is ready to send. Tap the button below to open it in your email app, addressed to our admissions team.</p>
+  <div class="ref-box" id="refNumber">—</div>
+  <div class="confirm-actions" id="manualActions">
+    <a class="btn-ghost" id="mailLink" href="#" style="text-decoration:none;">Send by email</a>
+    <button class="btn-ghost" id="downloadBtn">Download a copy</button>
+  </div>
+  <details class="fallback-box" id="fallbackBox">
+    <summary>Mail app didn't open? Copy the message manually</summary>
+    <textarea id="fallbackText" readonly></textarea>
+    <div class="copy-row"><button class="btn-ghost" id="copyBtn" type="button">Copy message</button></div>
+    <p style="font-size:0.78rem;color:var(--text-soft);margin-top:8px;">Paste this into a new email addressed to <strong id="admEmailLabel"></strong> from your own email account.</p>
+  </details>
+  <div class="confirm-actions" style="margin-top:22px;">
+    <button class="btn-ghost" id="newAppBtn">Submit another application</button>
+  </div>
+</div>
+
+<footer>Maknazul 'Irfan Academy · Est. 2024 · Admissions</footer>
+</div>
+
+<div id="viewAdmin" hidden>
+  <div class="admin-wrap">
+    <div class="admin-gate" id="adminGate">
+      <h2>Staff access</h2>
+      <p>Enter the staff passcode to view and manage applications.</p>
+      <input type="password" id="gatePasscode" placeholder="Passcode" autocomplete="off">
+      <div class="gate-error" id="gateError"></div>
+      <button class="btn-primary" id="gateSubmit" type="button">Enter</button>
+    </div>
+
+    <div id="adminContent" hidden>
+      <div class="admin-head">
+        <h2>Applications</h2>
+        <div class="head-actions">
+          <button class="btn-export" id="exportBtn">Export to Excel</button>
+        </div>
+      </div>
+
+      <div class="stat-row" id="statRow"></div>
+
+      <div class="admin-controls">
+        <input type="text" id="searchInput" placeholder="Search by name or reference...">
+        <select id="filterSection">
+          <option value="">All sections</option>
+          <option value="Ibtidaiyyah">Ibtidaiyyah</option>
+          <option value="I'dadiyyah">I'dadiyyah</option>
+        </select>
+        <select id="filterStatus">
+          <option value="">All statuses</option>
+          <option value="pending">Pending</option>
+          <option value="review">Under review</option>
+          <option value="accepted">Accepted</option>
+          <option value="declined">Declined</option>
+        </select>
+      </div>
+
+      <div class="app-list" id="appList"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <div class="ee">No applications yet</div>
+        <div>Submitted applications will appear here.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function() {
+  "use strict";
+  var ADMISSIONS_EMAIL = "maknazulirfanacademy@gmail.com";
+  document.getElementById('admEmailLabel').textContent = ADMISSIONS_EMAIL;
+
+  function makeRef() {
+    var d = new Date();
+    var y = d.getFullYear().toString().slice(-2);
+    var rand = Math.random().toString(36).slice(2, 6).toUpperCase();
+    return 'MIA-' + y + '-' + rand;
+  }
+
+  function messageText(app) {
+    return [
+      "New admission application — Maknazul 'Irfan Academy",
+      "",
+      "Reference: " + app.id,
+      "Section applied for: " + app.section,
+      "",
+      "Applicant name: " + app.fullName,
+      "Date of birth: " + app.dob,
+      "Gender: " + app.gender,
+      "Home address: " + app.address,
+      "",
+      "Guardian name: " + app.guardianName,
+      "Relationship: " + app.relationship,
+      "Guardian phone: " + app.phone,
+      "Guardian email: " + app.email,
+      "",
+      "Previous school: " + (app.prevSchool || "—"),
+      "Last class completed: " + (app.prevClass || "—"),
+      "Additional notes: " + (app.notes || "—"),
+      "",
+      "Submitted: " + new Date(app.submittedAt).toLocaleString()
+    ].join("\n");
+  }
+
+  var form = document.getElementById('appForm');
+  var formPanel = document.getElementById('formPanel');
+  var confirmPanel = document.getElementById('confirmPanel');
+  var formError = document.getElementById('formError');
+  var submitBtn = document.getElementById('submitBtn');
+  var formMsg = document.getElementById('formMsg');
+  var lastApp = null;
+  var photoData = null; // { name, type, base64 }
+
+  var MAX_PHOTO_BYTES = 3 * 1024 * 1024; // 3 MB — keeps the base64-encoded upload under Vercel's request size limit
+  var photoInput = document.getElementById('photoInput');
+  var photoField = document.getElementById('photoField');
+  var photoStatus = document.getElementById('photoStatus');
+  var photoIcon = document.getElementById('photoIcon');
+
+  photoInput.addEventListener('change', function() {
+    var file = photoInput.files && photoInput.files[0];
+    photoData = null;
+    photoField.classList.remove('has-file');
+    if (!file) { photoStatus.textContent = ''; return; }
+
+    if (file.size > MAX_PHOTO_BYTES) {
+      photoStatus.textContent = 'That file is too large (max 3 MB). Please choose a smaller image.';
+      photoInput.value = '';
+      return;
+    }
+    if (!/^image\/(png|jpeg|webp)$/.test(file.type)) {
+      photoStatus.textContent = 'Please choose a PNG, JPEG or WEBP image.';
+      photoInput.value = '';
+      return;
+    }
+
+    photoStatus.textContent = 'Reading file...';
+    var reader = new FileReader();
+    reader.onload = function() {
+      var dataUrl = reader.result; // "data:image/jpeg;base64,AAAA..."
+      var base64 = dataUrl.split(',')[1];
+      photoData = { name: file.name, type: file.type, base64: base64 };
+      photoField.classList.add('has-file');
+      if (photoIcon) {
+        var img = document.createElement('img');
+        img.className = 'file-preview-img';
+        img.src = dataUrl;
+        img.alt = '';
+        photoField.insertBefore(img, photoIcon);
+        photoIcon.remove();
+      }
+      photoStatus.textContent = file.name;
+    };
+    reader.onerror = function() {
+      photoStatus.textContent = 'Could not read that file — please try again.';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Once deployed, this points at the Vercel function that emails
+  // applications automatically. Leave blank to always use the
+  // mail-app / copy-paste fallback instead.
+  var BACKEND_ENDPOINT = "/api/submit"; // same-origin, since this page now lives on the same Vercel site as the backend
+
+  function mailUrl(app) {
+    var subject = encodeURIComponent("Admission application — " + app.fullName + " (" + app.id + ")");
+    var body = encodeURIComponent(messageText(app));
+    return 'mailto:' + encodeURIComponent(ADMISSIONS_EMAIL) + '?subject=' + subject + '&body=' + body;
+  }
+
+  function showConfirm(app, autoSent) {
+    lastApp = app;
+    document.getElementById('refNumber').textContent = app.id;
+    document.getElementById('fallbackText').value = messageText(app);
+    document.getElementById('mailLink').setAttribute('href', mailUrl(app));
+    if (autoSent) {
+      document.getElementById('confirmTitle').textContent = 'Application sent';
+      document.getElementById('confirmMsg').textContent = "We've emailed your application straight to our admissions team — no further action needed.";
+      document.getElementById('manualActions').hidden = true;
+      document.getElementById('fallbackBox').hidden = true;
+    } else {
+      document.getElementById('confirmTitle').textContent = 'Almost done';
+      document.getElementById('confirmMsg').textContent = 'Your application is ready to send. Tap the button below to open it in your email app, addressed to our admissions team.';
+      document.getElementById('manualActions').hidden = false;
+      document.getElementById('fallbackBox').hidden = false;
+    }
+    formPanel.hidden = true;
+    confirmPanel.hidden = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    formError.hidden = true;
+
+    var sectionEl = form.querySelector('input[name="section"]:checked');
+    if (!sectionEl) {
+      formError.textContent = "Please choose a section (Ibtidaiyyah or I\u2019dadiyyah).";
+      formError.hidden = false;
+      return;
+    }
+
+    if (!photoData) {
+      formError.textContent = 'Please upload a passport photograph.';
+      formError.hidden = false;
+      photoField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    var app = {
+      id: makeRef(),
+      section: sectionEl.value,
+      fullName: document.getElementById('fullName').value.trim(),
+      dob: document.getElementById('dob').value,
+      gender: document.getElementById('gender').value,
+      address: document.getElementById('address').value.trim(),
+      guardianName: document.getElementById('guardianName').value.trim(),
+      relationship: document.getElementById('relationship').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      prevSchool: document.getElementById('prevSchool').value.trim(),
+      prevClass: document.getElementById('prevClass').value.trim(),
+      notes: document.getElementById('notes').value.trim(),
+      submittedAt: new Date().toISOString(),
+      photo: photoData,
+      _hp: ''
+    };
+
+    if (!app.fullName || !app.dob || !app.gender || !app.address || !app.guardianName || !app.relationship || !app.phone || !app.email) {
+      formError.textContent = 'Please fill in all required fields.';
+      formError.hidden = false;
+      return;
+    }
+
+    if (!BACKEND_ENDPOINT) {
+      showConfirm(app, false);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    formMsg.textContent = 'Sending...';
+    try {
+      var res = await fetch(BACKEND_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(app)
+      });
+      if (res.ok) {
+        showConfirm(app, true);
+      } else {
+        showConfirm(app, false);
+      }
+    } catch (err) {
+      // Network/CORS failure — fall back to mail-app / copy method.
+      showConfirm(app, false);
+    } finally {
+      submitBtn.disabled = false;
+      formMsg.textContent = '';
+    }
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', async function() {
+    var ta = document.getElementById('fallbackText');
+    try {
+      await navigator.clipboard.writeText(ta.value);
+      var btn = document.getElementById('copyBtn');
+      var old = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = old; }, 1600);
+    } catch (e) {
+      ta.select();
+    }
+  });
+
+  document.getElementById('downloadBtn').addEventListener('click', async function() {
+    if (!lastApp) return;
+    var text = messageText(lastApp);
+    try {
+      var claudeApi = (window.claude && typeof window.claude.use === 'function') ? window.claude : null;
+      var downloadsNS = claudeApi ? await claudeApi.use('downloads') : null;
+      if (downloadsNS) {
+        await downloadsNS.save({ filename: lastApp.id + '-application.txt', data: text });
+        return;
+      }
+    } catch (e) { /* fall through */ }
+    // fallback: select the fallback textarea so the visitor can copy manually
+    document.querySelector('.fallback-box').open = true;
+    document.getElementById('fallbackText').focus();
+    document.getElementById('fallbackText').select();
+  });
+
+  document.getElementById('newAppBtn').addEventListener('click', function() {
+    form.reset();
+    confirmPanel.hidden = true;
+    formPanel.hidden = false;
+  });
+
+  // ---------- Tabs ----------
+  var tabApply = document.getElementById('tabApply');
+  var tabAdmin = document.getElementById('tabAdmin');
+  var viewApply = document.getElementById('viewApply');
+  var viewAdmin = document.getElementById('viewAdmin');
+
+  function showView(name) {
+    if (name === 'admin') {
+      viewApply.hidden = true; viewAdmin.hidden = false;
+      tabAdmin.classList.add('active'); tabApply.classList.remove('active');
+    } else {
+      viewAdmin.hidden = true; viewApply.hidden = false;
+      tabApply.classList.add('active'); tabAdmin.classList.remove('active');
+    }
+  }
+  tabApply.addEventListener('click', function(){ showView('apply'); });
+  tabAdmin.addEventListener('click', function(){ showView('admin'); });
+
+  // ---------- Admin: gate ----------
+  var STATUS_LABELS = { pending: "Pending", review: "Under review", accepted: "Accepted", declined: "Declined" };
+  var adminPasscode = null;
+  var allApps = [];
+  var openId = null;
+
+  var adminGate = document.getElementById('adminGate');
+  var adminContent = document.getElementById('adminContent');
+  var gatePasscode = document.getElementById('gatePasscode');
+  var gateError = document.getElementById('gateError');
+  var gateSubmit = document.getElementById('gateSubmit');
+
+  async function attemptLogin() {
+    var pass = gatePasscode.value.trim();
+    if (!pass) return;
+    gateError.textContent = '';
+    gateSubmit.disabled = true;
+    try {
+      var res = await fetch('/api/admin-list', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode: pass })
+      });
+      var data = await res.json();
+      if (!res.ok || !data.ok) {
+        gateError.textContent = data.error || 'Incorrect passcode.';
+        gateSubmit.disabled = false;
+        return;
+      }
+      adminPasscode = pass;
+      allApps = data.applications || [];
+      adminGate.hidden = true;
+      adminContent.hidden = false;
+      paintStats();
+      paintList();
+    } catch (err) {
+      gateError.textContent = 'Could not reach the server. Please try again.';
+    } finally {
+      gateSubmit.disabled = false;
+    }
+  }
+  gateSubmit.addEventListener('click', attemptLogin);
+  gatePasscode.addEventListener('keydown', function(e) { if (e.key === 'Enter') attemptLogin(); });
+
+  async function refreshApps() {
+    if (!adminPasscode) return;
+    try {
+      var res = await fetch('/api/admin-list', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode: adminPasscode })
+      });
+      var data = await res.json();
+      if (data.ok) {
+        allApps = data.applications || [];
+        paintStats();
+        paintList();
+      }
+    } catch (err) { /* keep showing stale data */ }
+  }
+
+  async function updateStatus(reference, status) {
+    if (!adminPasscode) return;
+    try {
+      await fetch('/api/admin-update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode: adminPasscode, reference: reference, status: status })
+      });
+    } catch (err) { /* ignore, refresh will show real state */ }
+  }
+
+  // ---------- Admin: list / filter / stats ----------
+  var appList = document.getElementById('appList');
+  var emptyState = document.getElementById('emptyState');
+  var statRow = document.getElementById('statRow');
+  var searchInput = document.getElementById('searchInput');
+  var filterSection = document.getElementById('filterSection');
+  var filterStatus = document.getElementById('filterStatus');
+  var exportBtn = document.getElementById('exportBtn');
+
+  [searchInput, filterSection, filterStatus].forEach(function(el) {
+    el.addEventListener('input', paintList);
+  });
+
+  function esc(s) {
+    return (s || '').toString().replace(/[&<>"']/g, function(c) {
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
+  }
+  function fmtDate(iso) {
+    if (!iso) return '-';
+    var d = new Date(iso);
+    if (isNaN(d)) return iso;
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function paintStats() {
+    var counts = { total: allApps.length, pending: 0, review: 0, accepted: 0, declined: 0 };
+    allApps.forEach(function(a) {
+      var s = (a.status || 'pending').toLowerCase();
+      if (counts[s] !== undefined) counts[s]++;
+    });
+    statRow.innerHTML =
+      statCard(counts.total, 'Total applications') +
+      statCard(counts.pending, 'Pending') +
+      statCard(counts.review, 'Under review') +
+      statCard(counts.accepted, 'Accepted');
+  }
+  function statCard(n, label) {
+    return '<div class="stat-card"><div class="n">' + n + '</div><div class="l">' + label + '</div></div>';
+  }
+
+  function paintList() {
+    var q = searchInput.value.trim().toLowerCase();
+    var secF = filterSection.value;
+    var statF = filterStatus.value;
+
+    var filtered = allApps.filter(function(a) {
+      var status = (a.status || 'pending').toLowerCase();
+      if (secF && a.section !== secF) return false;
+      if (statF && status !== statF) return false;
+      if (q) {
+        var hay = ((a.fullName||'') + ' ' + (a.id||'') + ' ' + (a.guardianName||'')).toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+
+    if (!filtered.length) {
+      appList.innerHTML = '';
+      emptyState.hidden = false;
+      emptyState.querySelector('.ee').textContent = allApps.length ? 'No matching applications' : 'No applications yet';
+      return;
+    }
+    emptyState.hidden = true;
+
+    appList.innerHTML = filtered.map(function(a) {
+      var status = (a.status || 'pending').toLowerCase();
+      var badgeClass = 'badge-' + status;
+      var isOpen = openId === a.id;
+      return (
+        '<div class="app-row' + (isOpen ? ' open' : '') + '" data-id="' + esc(a.id) + '">' +
+          '<div class="app-row-top">' +
+            '<div>' +
+              '<div class="app-name">' + esc(a.fullName) + '</div>' +
+              '<div class="app-meta">' + esc(a.section) + ' . ' + esc(a.id) + ' . ' + fmtDate(a.timestamp) + '</div>' +
+            '</div>' +
+            '<span class="badge ' + badgeClass + '">' + esc(STATUS_LABELS[status] || a.status) + '</span>' +
+          '</div>' +
+          '<div class="app-detail">' +
+            '<dl class="detail-grid">' +
+              detailItem('Date of birth', fmtDate(a.dob)) +
+              detailItem('Gender', a.gender) +
+              detailItem('Home address', a.address) +
+              detailItem('Guardian', (a.guardianName||'') + (a.relationship ? ' (' + a.relationship + ')' : '')) +
+              detailItem('Phone', a.phone) +
+              detailItem('Email', a.email || '-') +
+              detailItem('Previous school', a.prevSchool || '-') +
+              detailItem('Last class completed', a.prevClass || '-') +
+            '</dl>' +
+            (a.notes ? '<div style="margin-bottom:14px;"><dt style="color:var(--text-soft);font-size:0.76rem;">Notes</dt><dd style="margin:0;">' + esc(a.notes) + '</dd></div>' : '') +
+            '<div class="status-actions">' +
+              statusBtn(a, status, 'pending') + statusBtn(a, status, 'review') + statusBtn(a, status, 'accepted') + statusBtn(a, status, 'declined') +
+            '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+
+    appList.querySelectorAll('.app-row').forEach(function(row) {
+      row.addEventListener('click', function(e) {
+        if (e.target.closest('.status-actions')) return;
+        var id = row.getAttribute('data-id');
+        openId = (openId === id) ? null : id;
+        paintList();
+      });
+    });
+    appList.querySelectorAll('.status-actions button').forEach(function(btn) {
+      btn.addEventListener('click', async function(e) {
+        e.stopPropagation();
+        var id = btn.getAttribute('data-id');
+        var status = btn.getAttribute('data-status');
+        btn.disabled = true;
+        await updateStatus(id, status);
+        var app = allApps.find(function(a) { return a.id === id; });
+        if (app) app.status = status;
+        paintStats();
+        paintList();
+      });
+    });
+  }
+
+  function detailItem(label, value) {
+    return '<div><dt>' + esc(label) + '</dt><dd>' + esc(value || '-') + '</dd></div>';
+  }
+  function statusBtn(a, currentStatus, status) {
+    var cls = currentStatus === status ? ' current' : '';
+    return '<button type="button" class="' + cls.trim() + '" data-id="' + esc(a.id) + '" data-status="' + status + '">' + STATUS_LABELS[status] + '</button>';
+  }
+
+  function loadXLSX() {
+    return new Promise(function(resolve, reject) {
+      if (typeof XLSX !== 'undefined') { resolve(); return; }
+      var s = document.createElement('script');
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.19.3/xlsx.full.min.js';
+      s.onload = function() { resolve(); };
+      s.onerror = function() { reject(new Error('load failed')); };
+      document.head.appendChild(s);
+    });
+  }
+
+  exportBtn.addEventListener('click', async function() {
+    if (!allApps.length) { alert('No applications to export yet.'); return; }
+    exportBtn.disabled = true;
+    exportBtn.textContent = 'Preparing...';
+    try {
+      await loadXLSX();
+    } catch (err) {
+      alert('Could not load the export tool. Check your connection and try again.');
+      exportBtn.disabled = false;
+      exportBtn.textContent = 'Export to Excel';
+      return;
+    }
+    exportBtn.textContent = 'Export to Excel';
+    exportBtn.disabled = false;
+
+    var rows = allApps.map(function(a) {
+      var status = (a.status || 'pending').toLowerCase();
+      return {
+        Reference: a.id, Name: a.fullName, Section: a.section, Status: STATUS_LABELS[status] || a.status,
+        'Date of birth': a.dob, Gender: a.gender, Address: a.address, Guardian: a.guardianName,
+        Relationship: a.relationship, Phone: a.phone, Email: a.email,
+        'Previous school': a.prevSchool, 'Last class completed': a.prevClass, Notes: a.notes,
+        Timestamp: a.timestamp
+      };
+    });
+    var ws = XLSX.utils.json_to_sheet(rows);
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Applications');
+    XLSX.writeFile(wb, 'maknazul-irfan-applications.xlsx');
+  });
+
+})();
+</script>
+</body>
+</html>
