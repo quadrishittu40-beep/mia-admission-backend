@@ -439,6 +439,9 @@
   <h2 id="confirmTitle">Almost done</h2>
   <p id="confirmMsg">Your application is ready to send. Tap the button below to open it in your email app, addressed to our admissions team.</p>
   <div class="ref-box" id="refNumber">—</div>
+  <div class="confirm-actions" id="receiptActions" hidden>
+    <button class="btn-primary" id="downloadReceiptBtn" type="button">Download Receipt (PDF)</button>
+  </div>
   <div class="confirm-actions" id="manualActions">
     <a class="btn-ghost" id="mailLink" href="#" style="text-decoration:none;">Send by email</a>
     <button class="btn-ghost" id="downloadBtn">Download a copy</button>
@@ -609,11 +612,21 @@
     return 'mailto:' + encodeURIComponent(ADMISSIONS_EMAIL) + '?subject=' + subject + '&body=' + body;
   }
 
-  function showConfirm(app, autoSent) {
+  function showConfirm(app, autoSent, receiptPdfBase64) {
     lastApp = app;
     document.getElementById('refNumber').textContent = app.id;
     document.getElementById('fallbackText').value = messageText(app);
     document.getElementById('mailLink').setAttribute('href', mailUrl(app));
+
+    var receiptActions = document.getElementById('receiptActions');
+    if (receiptPdfBase64) {
+      lastReceiptPdfBase64 = receiptPdfBase64;
+      receiptActions.hidden = false;
+    } else {
+      lastReceiptPdfBase64 = null;
+      receiptActions.hidden = true;
+    }
+
     if (autoSent) {
       document.getElementById('confirmTitle').textContent = 'Application sent';
       document.getElementById('confirmMsg').textContent = "We've emailed your application straight to our admissions team — no further action needed.";
@@ -629,6 +642,28 @@
     confirmPanel.hidden = false;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  var lastReceiptPdfBase64 = null;
+  document.getElementById('downloadReceiptBtn').addEventListener('click', function() {
+    if (!lastReceiptPdfBase64 || !lastApp) return;
+    try {
+      var byteChars = atob(lastReceiptPdfBase64);
+      var byteNumbers = new Array(byteChars.length);
+      for (var i = 0; i < byteChars.length; i++) byteNumbers[i] = byteChars.charCodeAt(i);
+      var byteArray = new Uint8Array(byteNumbers);
+      var blob = new Blob([byteArray], { type: 'application/pdf' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'receipt-' + lastApp.id + '.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function() { URL.revokeObjectURL(url); }, 4000);
+    } catch (err) {
+      alert('Could not prepare the receipt for download. It was still emailed to you.');
+    }
+  });
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -716,7 +751,8 @@
         body: JSON.stringify(app)
       });
       if (res.ok) {
-        showConfirm(app, true);
+        var okData = await res.json().catch(function() { return {}; });
+        showConfirm(app, true, okData.receiptPdfBase64);
       } else {
         var data = await res.json().catch(function() { return {}; });
         formError.textContent = data.error === 'Payment could not be verified.'
