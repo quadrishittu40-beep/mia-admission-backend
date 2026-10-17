@@ -755,13 +755,13 @@
         showConfirm(app, true, okData.receiptPdfBase64);
       } else {
         var data = await res.json().catch(function() { return {}; });
-        formError.textContent = data.error === 'Payment could not be verified.'
-          ? 'We could not confirm your payment. Please contact admissions with reference ' + app.paymentReference + '.'
-          : 'Payment succeeded but submission failed. Please contact admissions with reference ' + app.paymentReference + '.';
+        formError.textContent = 'Payment succeeded but submission failed (status ' + res.status + ': ' +
+          (data.error || 'unknown error') + '). Please contact admissions with reference ' + app.paymentReference + '.';
         formError.hidden = false;
       }
     } catch (err) {
-      formError.textContent = 'Payment succeeded but we could not reach the server. Please contact admissions with reference ' + app.paymentReference + '.';
+      formError.textContent = 'Payment succeeded but we could not reach the server (' + (err && err.message ? err.message : 'network error') +
+        '). Please contact admissions with reference ' + app.paymentReference + '.';
       formError.hidden = false;
     } finally {
       submitBtn.disabled = false;
